@@ -15,6 +15,7 @@ import LoadingScreen from './LoadingScreen' ;
 import PushNotification from 'react-native-push-notification' ;
 import * as Animatable from 'react-native-animatable';
 import timer from 'react-native-timer';
+import ErrorScreen from './ErrorScreen';
 
 import {
   StyleSheet,
@@ -35,6 +36,7 @@ export default class MainApp extends Component {
 			namesFetched : false,
 			savedNamesLoaded : false ,
 			dataReady: false,
+			dataNotAvailable: false,
 		};
 		Store.on("EventsFetched",() => {
 			this.setState({eventsFetched : true});
@@ -68,8 +70,10 @@ export default class MainApp extends Component {
 			console.log("Received call for refresh");
 			this.refresh();
 		});
+		Store.on("dataNotFound", () => {
+			this.setState({ dataNotAvailable : true });
+		});
 		this.fetchAll();
-		
 		this.setupNotifications();
 	}
 	
@@ -158,6 +162,7 @@ export default class MainApp extends Component {
 			namesFetched : false,
 			savedNamesLoaded : false ,
 			dataReady: false,
+			dataNotAvailable : false,
 		});
 		this.fetchAll();
 	}
@@ -183,7 +188,11 @@ export default class MainApp extends Component {
 	}		
 	
 	render(){
-		if (this.state.dataReady){
+		if (this.state.dataNotAvailable)
+			return (
+			<ErrorScreen/>
+		);
+		else if (this.state.dataReady){
 			console.log("Moving into main app"+this.state.eventsFetched+this.state.attendanceFetched+this.state.namesFetched+this.state.savedNamesLoaded);
 			return (
 				<TabNavigator>

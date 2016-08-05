@@ -92,7 +92,7 @@ export default class Segment extends Component{
 				options={ this.options }
 				onSelection={ setSelectedOption.bind(this) }
 				selectedOption={this.state.selectedOption }
-				separatorWidth = { 1 }
+				separatorWidth = { 2 }
 				separatorTint = { '#D24E4E' }
 				tint= {'#D24E4E'}
 				textAlign = {'center'}

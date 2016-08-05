@@ -83,7 +83,9 @@ export default class MainTab extends Component {
 			return (
 			<View style={styles.EmptyContainer}>
 				<Image style={styles.smiley} source={require('../images/saddy.png')} />
-				<Text style={styles.EmptyText}>You have not saved any names yet. Begin by going to the NameList Tab and save the names you wish to update the attendance for</Text>
+				<Text style={styles.EmptyText}>You have not saved any names yet.</Text>
+				<Text style={styles.EmptyText}>Go to the NameList Tab</Text>
+				<Text style={styles.EmptyText}>to save the names you wish to track</Text>				
 			</View>
 		);
 		else

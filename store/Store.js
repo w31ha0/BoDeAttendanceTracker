@@ -26,9 +26,14 @@ class Store extends EventEmitter{
 		  .then((response) => {
 			var str = JSON.stringify(response);
 			console.log("RECEIVED "+str);
-			return response.json()
+			if (response["headers"]["map"]["content-type"] == "application/json; charset=utf-8")
+				return response.json()
 		  })
 		  .then((responseJson) => {
+			  if (responseJson == null){
+				  this.onDataNotFound();
+				  return ;
+			  }
 			var str = JSON.stringify(responseJson);
 			console.log("JSON detected:"+responseJson);
 			var array = str.split(',');
@@ -39,6 +44,7 @@ class Store extends EventEmitter{
 			return responseJson
 		  })
 		  .catch((error) => {
+			  console.log("ERROR");
 			console.error(error);
 		  });
 	}
@@ -55,9 +61,14 @@ class Store extends EventEmitter{
 		fullURL = Constants.namesURL + "?class=" + groupChar ;
 		fetch(fullURL)
 				  .then((response) => {
-					return response.json()
+					  	if (response["headers"]["map"]["content-type"] == "application/json; charset=utf-8")
+							return response.json()
 				  })
 				  .then((responseJson) => {
+					   if (responseJson == null){
+						  this.onDataNotFound();
+						  return ;
+					  }
 					var str = JSON.stringify(responseJson);
 					console.log("RECEIVED NAMES "+str+" for Group "+groupChar);	
 					switch( groupChar ){
@@ -75,6 +86,7 @@ class Store extends EventEmitter{
 					return responseJson
 				  })
 				  .catch((error) => {
+					    console.log("ERROR");
 					console.error(error);
 				  });//To replace with actual names fetched
 	}
@@ -85,9 +97,14 @@ class Store extends EventEmitter{
 		fetch(Constants.attendanceURL)
 				  .then((response) => {
 					var str = JSON.stringify(response);
-					return response.json()
+					if (response["headers"]["map"]["content-type"] == "application/json; charset=utf-8")
+						return response.json()
 				  })
 				  .then((responseJson) => {
+				  if (responseJson == null){
+					  this.onDataNotFound();
+					  return ;
+				  }
 					console.log("RECEIVED ATTENDANCE:"+responseJson);
 					this.attendanceData = helper.getAttendanceFromJsonArray(responseJson);
 					console.log("Attendance loaded as "+this.attendanceData);
@@ -95,6 +112,7 @@ class Store extends EventEmitter{
 					return responseJson
 				  })
 				  .catch((error) => {
+					    console.log("ERROR");
 					console.error(error);
 				  });
 	}
@@ -116,6 +134,7 @@ class Store extends EventEmitter{
 				  this.emit("submitFailed");
 		  })
 		  .catch((error) => {
+			    console.log("ERROR");
 			console.error(error);
 		  });
 	}
@@ -129,6 +148,10 @@ class Store extends EventEmitter{
 				console.log("No saved names found");
 			this.emit("SavedNamesLoaded");
 		});
+	}
+	
+	onDataNotFound = () => {
+		this.emit("dataNotFound");
 	}
 	
 	getAllEvents = () => {
