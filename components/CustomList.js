@@ -70,7 +70,7 @@ export default class CustomList extends Component{
 			case 3:
 				return (
 					<View>
-						<Text style={styles.section4} >{this.props.currentName}</Text>
+						<Text style={styles.section5} >{this.props.currentName}</Text>
 						<ListView style={styles.segmentListView}
 							  enableEmptySections={true}
 							  dataSource={this.state.dataSource}
@@ -81,7 +81,7 @@ export default class CustomList extends Component{
 			default:
 				return (
 					<View>
-						<Text style={styles.section4}>{this.props.currentName}</Text>
+						<Text style={styles.section5}>{this.props.currentName}</Text>
 						<ListView style={styles.segmentListView}
 							  enableEmptySections={true}
 							  dataSource={this.state.dataSource}

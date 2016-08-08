@@ -7,6 +7,7 @@ import {
 	AsyncStorage,
 	Platform,
 	ToastAndroid,
+	AlertIOS,
 } from 'react-native';
 
 class Store extends EventEmitter{
@@ -18,7 +19,7 @@ class Store extends EventEmitter{
 		this.namesForBGroup = [];
 		this.namesForCGroup = [];
 		this.attendanceData={};
-		this.savedNames = [] ;
+		this.savedNamesStore = [] ;
 	}	
 	
 	fetchEvents = () => {
@@ -118,8 +119,8 @@ class Store extends EventEmitter{
 	}
 
 	submitAllAttendance = () => {
-		for (var i=0; i<this.savedNames.length;i++){
-			this.submitAttendance(this.savedNames[i]);
+		for (var i=0; i<this.savedNamesStore.length;i++){
+			this.submitAttendance(this.savedNamesStore[i]);
 		}
 	}
 	
@@ -143,7 +144,7 @@ class Store extends EventEmitter{
 		console.log("loading saved names...");
 		namesSaved = AsyncStorage.getItem(Constants.keyForNames, (err, result) => {
 			if (result  != null){
-				this.savedNames = helper.fillArrayFromPromiseObject (result);
+				this.savedNamesStore = helper.fillArrayFromPromiseObject (result);
 			}else
 				console.log("No saved names found");
 			this.emit("SavedNamesLoaded");
@@ -185,7 +186,7 @@ class Store extends EventEmitter{
 	}
 	
 	getSavedNames = () => {
-		return this.savedNames;
+		return this.savedNamesStore;
 	}
 	
 	formSubmitURL(rawUrl,currentName){
@@ -202,15 +203,16 @@ class Store extends EventEmitter{
 		AsyncStorage.setItem(Constants.keyForNames, namesToSave.toString(), (err) => {
 			console.log("Error is "+err);
 			if (err == null){
-				if (Platform.OS === 'ios') {
-			  			  AlertIOS.alert(
-							 'Completed',
-							 'Names Saved Successfully'
-							);
-			} else {
-				ToastAndroid.show('Names Saved Successfully', ToastAndroid.SHORT);
-				}
-				this.emit("ChangeList");
+					this.savedNamesStore = namesToSave;
+					this.emit("ChangeList");
+					if (Platform.OS === 'ios') {
+					  AlertIOS.alert(
+						 'Completed',
+						 'Names Saved Successfully'
+						);
+					} else {
+					  ToastAndroid.show('Names Saved Successfully', ToastAndroid.SHORT);
+			}
 			}
 		});
 	}

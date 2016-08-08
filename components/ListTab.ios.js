@@ -106,7 +106,7 @@ export default class ListTab extends Component {
 
 	render(){
 		return (
-		<View  style={ styles.container}>
+		<View  style={ styles.containerIOS}>
 			<View style ={styles.headerBoxList}>
 					<Image style={styles.headerIcon} source={require('../images/list-icon.png')} />
 					<Text style={styles.headerText}>Select the names you wish to save</Text>

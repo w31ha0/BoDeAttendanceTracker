@@ -98,7 +98,7 @@ export default class MainTab extends Component {
 		);
 		else
 			return (
-				<View style={styles.container}>
+				<View style={styles.containerIOS}>
 					<View style ={styles.headerBoxMain}>
 						<Image style={styles.headerIcon} source={require('../images/click-icon.png')} />
 						<Text style={styles.headerText}>Edit the Attendance and hit "Submit"</Text>

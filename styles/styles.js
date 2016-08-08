@@ -42,6 +42,10 @@ module.exports = StyleSheet.create({
 	container: {
 		flex : 1 ,
 	  },
+	containerIOS: {
+		flex : 1 ,
+		marginTop: 10,
+	  },
 	loadingContainer: {
 		flex : 1 ,
 		backgroundColor :'#FF7FED',
@@ -78,10 +82,11 @@ module.exports = StyleSheet.create({
 		flex : 15,
 	  },
 	listTabListView: {
-		flex : 15 ,
+		flex : 13 ,
 	  },
 	button: {
 		flex : 1 ,
+		margin:10,
 	  },
 	segmentListView: {
     margin: 10,
@@ -94,7 +99,7 @@ module.exports = StyleSheet.create({
 	color : 'black',
   },
     scroll: {
-	  flex:15,
+	  flex:13,
   },
 	lineSeparator: {
 		flex : 1,
@@ -122,6 +127,12 @@ module.exports = StyleSheet.create({
 	section4 : {
 		color : 'black',
 		fontWeight : 'bold',
+		fontSize : 15 ,
+		padding : 5 ,
+		backgroundColor: '#68E02C',
+	},
+	section5: {
+		color : 'black',
 		fontSize : 15 ,
 		padding : 5 ,
 		backgroundColor: '#68E02C',
