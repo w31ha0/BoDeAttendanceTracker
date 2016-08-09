@@ -50,15 +50,21 @@ export default class AttendanceTab extends Component{
 		switch (rowData){
 			case "Group A":
 				return (
+				<View style={{borderWidth:0.5}}>
 				<Text style={styles.section1} >{rowData}</Text>
+				</View>
 			);
 			case "Group B":
 				return (
+				<View style={{borderWidth:0.5}}>
 				<Text style={styles.section2} >{rowData}</Text>
+				</View>
 			);
 			case "Group C":
 				return (
+				<View style={{borderWidth:0.5}}>
 				<Text style={styles.section3} >{rowData}</Text>
+				</View>
 			);
 			default:
 				return (
@@ -69,7 +75,9 @@ export default class AttendanceTab extends Component{
 	
 	renderSectionHeader = (sectionData, sectionID) => {
 		return (
-			<Text  style={styles.sectionHeader} >{sectionID}</Text>
+			<View style={{borderWidth:1}}>
+				<Text  style={styles.sectionHeader} >{sectionID}</Text>
+			</View>
 		);
 	}
 

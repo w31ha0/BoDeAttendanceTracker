@@ -83,19 +83,27 @@ export default class ListTab extends Component {
 		switch (sectionID){
 			case "Group A":
 				return (
-				<Text style={styles.section1} >{sectionID}</Text>
+				<View style={{borderWidth:0.5}}>
+					<Text style={styles.section1} >{sectionID}</Text>
+				</View>
 			);
 			case "Group B":
 				return (
-				<Text style={styles.section2} >{sectionID}</Text>
+				<View style={{borderWidth:0.5}}>
+					<Text style={styles.section2} >{sectionID}</Text>
+				</View>
 			);
 			case "Group C":
 				return (
-				<Text style={styles.section3} >{sectionID}</Text>
+				<View style={{borderWidth:0.5}}>
+					<Text style={styles.section3} >{sectionID}</Text>
+				</View>
 			);
 			default:
 				return (
-				<Text style={styles.nameRow}>{sectionID}</Text>
+				<View style={{borderWidth:0.5}}>
+					<Text style={styles.nameRow}>{sectionID}</Text>
+				</View>
 			);
 		}	
 	}

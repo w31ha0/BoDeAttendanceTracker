@@ -16,6 +16,7 @@ import PushNotification from 'react-native-push-notification' ;
 import * as Animatable from 'react-native-animatable';
 import timer from 'react-native-timer';
 import ErrorScreen from './ErrorScreen';
+import styles from '../styles/styles';
 
 import {
   StyleSheet,
@@ -197,6 +198,7 @@ export default class MainApp extends Component {
 			return (
 				<TabNavigator>
 				  <TabNavigator.Item
+					titleStyle={styles.tabText}
 					selected={this.state.selectedTab === 'main'}
 					title="Main"
 					onPress={() => this.setState({ selectedTab: 'main' })}>
@@ -205,12 +207,14 @@ export default class MainApp extends Component {
 				 <TabNavigator.Item
 					selected={this.state.selectedTab === 'nameList'}
 					title="Name List"
+					titleStyle={styles.tabText}
 					onPress={() => this.setState({ selectedTab: 'nameList' })}>
 					<ListTab/>
 				  </TabNavigator.Item>
 				  <TabNavigator.Item
 					selected={this.state.selectedTab === 'attendanceList'}
 					title="Attendance List"
+					titleStyle={styles.tabText}
 					onPress={() => this.setState({ selectedTab: 'attendanceList' })}>
 					<AttendanceTab/>
 				  </TabNavigator.Item>

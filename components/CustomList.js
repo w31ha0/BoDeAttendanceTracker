@@ -37,7 +37,9 @@ export default class CustomList extends Component{
 			case 0:
 				return (
 					<View>
-						<Text style={styles.section1} >{this.props.currentName}</Text>
+						<View style={{borderWidth:0.5}}>
+							<Text style={styles.section1} >{this.props.currentName}</Text>
+						</View>
 						<ListView style={styles.segmentListView}
 							  enableEmptySections={true}
 							  dataSource={this.state.dataSource}
@@ -48,7 +50,9 @@ export default class CustomList extends Component{
 			case 1:
 				return (
 					<View>
-						<Text style={styles.section2} >{this.props.currentName}</Text>
+						<View style={{borderWidth:0.5}}>
+							<Text style={styles.section2} >{this.props.currentName}</Text>
+						</View>
 						<ListView style={styles.segmentListView}
 							  enableEmptySections={true}
 							  dataSource={this.state.dataSource}
@@ -59,7 +63,9 @@ export default class CustomList extends Component{
 			case 2:
 				return (
 					<View>
-						<Text style={styles.section3} >{this.props.currentName}</Text>
+						<View style={{borderWidth:0.5}}>
+							<Text style={styles.section3} >{this.props.currentName}</Text>
+						</View>
 						<ListView style={styles.segmentListView}
 							  enableEmptySections={true}
 							  dataSource={this.state.dataSource}
@@ -70,7 +76,9 @@ export default class CustomList extends Component{
 			case 3:
 				return (
 					<View>
-						<Text style={styles.section5} >{this.props.currentName}</Text>
+						<View style={{borderWidth:1}}>
+							<Text style={styles.section5} >{this.props.currentName}</Text>
+						</View>
 						<ListView style={styles.segmentListView}
 							  enableEmptySections={true}
 							  dataSource={this.state.dataSource}
@@ -81,7 +89,9 @@ export default class CustomList extends Component{
 			default:
 				return (
 					<View>
-						<Text style={styles.section5}>{this.props.currentName}</Text>
+						<View style={{borderWidth:1}}>
+							<Text style={styles.section5}>{this.props.currentName}</Text>
+						</View>
 						<ListView style={styles.segmentListView}
 							  enableEmptySections={true}
 							  dataSource={this.state.dataSource}
