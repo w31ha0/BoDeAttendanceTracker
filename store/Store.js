@@ -129,8 +129,10 @@ class Store extends EventEmitter{
 		fetch(fullURL)
 		  .then((response) => {
 			  console.log("Response from submission: "+response.status);
-			  if (response.status == 200)
-				  this.emit("submitSuccessful");
+			  if (response.status == 200){
+				  if(  this.savedNamesStore.indexOf(currentName) == (this.savedNamesStore.length-1) )
+					this.emit("submitSuccessful");
+			  }
 			  else
 				  this.emit("submitFailed");
 		  })

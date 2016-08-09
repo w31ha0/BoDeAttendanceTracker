@@ -42,6 +42,7 @@ export default class MainTab extends Component {
 	componentDidMount() {
 		console.log("Segmented Controls are "+this.segmentedControls);
 		Store.on("submitSuccessful",() => {
+			console.log("Submission completed");
 			if (Platform.OS === 'ios') {
 			  AlertIOS.alert(
 				 'Completed',
